@@ -3,4 +3,5 @@ type Account @entity {
   chainID: BigInt!
   tokenContract: Bytes! # address
   tokenID: BigInt!
+  preferences: [Bytes!]
 }

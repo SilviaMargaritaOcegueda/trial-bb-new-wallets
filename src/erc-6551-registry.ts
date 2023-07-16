@@ -6,14 +6,14 @@ import {
 import { Account } from "../generated/schema";
 
 export function handleAccountCreated(event: AccountCreated): void {
-  let entity = Account.load(event.params.account.toHex());
-  if (entity) return;
+  let account = Account.load(event.params.account.toHex());
+  if (account) return;
 
-  entity = new Account(event.params.account.toHex());
-  entity.chainID = event.params.chainId;
-  entity.tokenContract = event.params.tokenContract;
-  entity.tokenID = event.params.tokenId;
+  account = new Account(event.params.account.toHex());
+  account.chainID = event.params.chainId;
+  account.tokenContract = event.params.tokenContract;
+  account.tokenID = event.params.tokenId;
 
   // Entities can be written to the store with `.save()`
-  entity.save();
+  account.save();
 }

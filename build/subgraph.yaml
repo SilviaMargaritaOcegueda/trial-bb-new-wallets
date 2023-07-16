@@ -22,3 +22,23 @@ dataSources:
         - event: AccountCreated(address,address,uint256,address,uint256,uint256)
           handler: handleAccountCreated
       file: ERC6551Registry/ERC6551Registry.wasm
+  - kind: ethereum
+    name: ExampleERC6551Account
+    network: mumbai
+    source:
+      address: "0xA2B8B665e33D722793897448f459881BA80F9A50"
+      abi: ExampleERC6551Account
+      startBlock: 37983545
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Account
+      abis:
+        - name: ExampleERC6551Account
+          file: ExampleERC6551Account/abis/ExampleERC6551Account.json
+      eventHandlers:
+        - event: zkPreferencesAdded(bytes16[])
+          handler: handleZkPreferencesAdded
+      file: ExampleERC6551Account/ExampleERC6551Account.wasm

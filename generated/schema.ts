@@ -88,4 +88,21 @@ export class Account extends Entity {
   set tokenID(value: BigInt) {
     this.set("tokenID", Value.fromBigInt(value));
   }
+
+  get preferences(): Array<Bytes> | null {
+    let value = this.get("preferences");
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set preferences(value: Array<Bytes> | null) {
+    if (!value) {
+      this.unset("preferences");
+    } else {
+      this.set("preferences", Value.fromBytesArray(<Array<Bytes>>value));
+    }
+  }
 }
